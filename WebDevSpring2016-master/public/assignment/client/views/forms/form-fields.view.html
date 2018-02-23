@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header">Form : {{formTitle}} </h1>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a href="#/forms">Forms</a></li>
+        <li role="presentation" class="active"><a href="#">Fields</a></li>
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div ui-sortable ng-model="formFields">
+                <div class="form-group" ng-repeat = "field in formFields">
+                    <label class="control-label">{{field.label}}</label>
+                    <div class="form-horizontal row">
+                        <div class="col-xs-6" ng-switch on="field.type">
+                            <div ng-switch-when="TEXT">
+                                <input type="text" class="form-control"  placeholder="{{field.placeholder}}">
+                            </div>
+                            <div ng-switch-when="TEXTAREA">
+                                <textarea class="form-control"  placeholder="{{field.placeholder}}"></textarea>
+                            </div>
+                            <div ng-switch-when="DATE">
+                                <input type="date" class="form-control"  placeholder="{{field.placeholder}}">
+                            </div>
+                            <div ng-switch-when="OPTIONS">
+                                <select class="form-control">
+                                    <option value="{{option.value}}" ng-repeat="option in field.options">{{option.label}}</option>
+                                </select>
+                            </div>
+                            <div ng-switch-when="CHECKBOXES">
+                                <div class="checkbox" ng-repeat="option in field.options">
+                                    <label>
+                                        <input type="checkbox" value="{{option.value}}">{{option.label}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div ng-switch-when="RADIOS">
+                                <div class="radio" ng-repeat="option in field.options">
+                                    <label>
+                                        <input type="radio" value="{{option.value}}" name="{{field.label}}"> {{option.label}}
+                                    </label>
+                                </div>
+                            </div>
+                            <div ng-switch-when="EMAIL">
+                                <input type="email" class="form-control"  placeholder="{{field.placeholder}}">
+                            </div>
+                        </div>
+                        <div class="col-xs-6" align="right">
+                            <span class="glyphicon glyphicon-pencil iconButton" ng-click="editField(field._id)" data-toggle="modal" data-target="#myModal"></span>&nbsp&nbsp
+                            <span class="glyphicon glyphicon-plus iconButton" ng-click="cloneField(field)"></span>&nbsp&nbsp
+                            <span class="glyphicon glyphicon-remove iconButton" ng-click="deleteField(field._id)"></span>&nbsp&nbsp
+                            <span class="glyphicon glyphicon-align-justify iconButton"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="newfield" class="control-label">Add New Field: </label>
+                <div class="form-horizontal row">
+                    <div class="col-xs-6">
+                        <select class="form-control" id="newfield" ng-model="fieldType">
+                            <option ng-repeat="option in fieldOptions">{{option}}</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6" align="right" ng-click="addField(fieldType)">
+                        <span class="glyphicon glyphicon-plus iconButton"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">{{dialogFor}}</h4>
+                        </div>
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <div class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="label" class="col-sm-2 control-label">Label: </label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="label" ng-model="dialog.label">
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-switch on="dialog.type">
+                                    <div ng-switch-when="TEXT">
+                                        <label class="col-sm-2 control-label">Placeholder: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"  ng-model="dialog.placeholder">
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="EMAIL">
+                                        <label class="col-sm-2 control-label">Placeholder: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"  ng-model="dialog.placeholder">
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="TEXTAREA">
+                                        <label  class="col-sm-2 control-label">Placeholder: </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control"  ng-model="dialog.placeholder">
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="OPTIONS">
+                                        <label class="col-sm-2 control-label">Options: </label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control"  ng-model="dialog.options"></textarea>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="CHECKBOXES">
+                                        <label class="col-sm-2 control-label">Options: </label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control"  ng-model="dialog.options"></textarea>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="RADIOS">
+                                        <label class="col-sm-2 control-label">Options: </label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control"  ng-model="dialog.options"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-success" data-dismiss="modal" ng-click="updateField(dialog, field._id)">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

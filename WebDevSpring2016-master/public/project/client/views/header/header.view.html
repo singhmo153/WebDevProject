@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="HeaderController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">NextReadHunt</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-class="{'active': $location.url()=='/about'}"><a href="#/about">About</a></li>
+                <li ng-class="{'active': $location.url()=='/search' || $location.url()=='/search/:title'}"><a href="#/search">Home</a></li>
+                <li ng-hide="currentUser" ng-class="{'active': $location.url()=='/login'}"><a href="#/login">Login/Register</a></li>
+                <li ng-show="currentUser" ng-class="{'active': $location.url()=='/profile/{{currentUser._id}}'}"><a href="#/profile/{{currentUser._id}}">{{currentUser.username}}</a></li>
+                <li ng-show="currentUser.roles.indexOf('admin') >= 0" ng-class="{'active': $location.url()=='/admin'}"><a href="#/admin">Admin</a></li>
+                <li ng-show="currentUser"><a href="#/home" ng-click="reset()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

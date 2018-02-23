@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<br>
+<nav ng-controller="NavController">
+    <ul class="nav nav-tabs topNavButtons">
+        <li ng-class="{'active': $location.url() == '/profile/{{currentUser._id}}'}"><a href="#/profile/{{currentUser._id}}">Profile</a></li>
+        <li ng-class="{'active': $location.url() == '/books/{{currentUser._id}}'}"><a href="#/books/{{currentUser._id}}">Books</a></li>
+        <li ng-class="{'active': $location.url() == '/following/{{currentUser._id}}'}"><a href="#/following/{{currentUser._id}}">Following</a></li>
+        <li ng-class="{'active': $location.url() == '/reviews/{{currentUser._id}}'}"><a href="#/reviews/{{currentUser._id}}">Reviews</a></li>
+    </ul>
+</nav>
+<br>
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th class="columnHeading"> BookName</th>
+            <th class="columnHeading">Rating</th>
+            <th class="columnHeading">Comments</th>
+            <th class="columnHeading">Action</th>
+        </tr>
+        <tr>
+            <td><div class="input-group"><input disabled = "disabled" type="text" ng-model="bookName" class="form-control"  placeholder="name"></div></td>
+            <td><div class="input-group"><input type="text" ng-model="rating" class="form-control ratingReviews"   placeholder="rating"></div></td>
+            <td><div class="input-group"><input type="text" ng-model="comments" class="form-control"  placeholder="comments"></div></td>
+            <td><!--<span ng-class="disable ? 'glyphicon glyphicon-plus iconButton' :  'glyphicon glyphicon-plus link-disable iconButton'" ng-click="disable && addReview()"></span>-->&nbsp&nbsp&nbsp&nbsp&nbsp
+                <span ng-disabled="currentuser!=currentUser" ng-class="!disable ? 'glyphicon glyphicon-ok iconButton' : 'glyphicon glyphicon-ok iconButton'" ng-click="!disable && updateReview()"></span></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="review in reviews" ng-class="{'success' : $index == selectedFormIndex}">
+            <td ><a href="#/detail/{{review.bookId}}" class="bookTitles">{{review.bookName}}</a></td>
+            <td class="bookTitles ratingReviews">{{review.rating}}</td>
+            <td class="bookTitles">{{review.comments}}</td>
+            <td>
+                <span ng-disabled="currentuser!=currentUser" class="glyphicon glyphicon-remove iconButton" ng-click="deleteReview(review)"></span>&nbsp&nbsp&nbsp&nbsp&nbsp
+                <span ng-disabled="currentuser!=currentUser" class="glyphicon glyphicon-pencil iconButton" ng-click="selectReview($index)"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

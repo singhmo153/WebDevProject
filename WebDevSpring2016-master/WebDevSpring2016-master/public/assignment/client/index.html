@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FormBuilderApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Form Maker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body ng-controller="MainController">
+    <div ng-include="'views/header/header.view.html'"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+            <div ng-view></div>
+        </div>
+    </div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.13.4/sortable.min.js"></script>
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="views/main/main.controller.js"></script>
+<script src="views/header/header.controller.js"></script>
+<script src="views/sidebar/sidebar.controller.js"></script>
+<script src="services/user.service.client.js"></script>
+<script src="views/users/register.controller.js"></script>
+<script src="views/users/profile.controller.js"></script>
+<script src="views/users/login.controller.js"></script>
+<script src="services/forms.service.client.js"></script>
+<script src="views/forms/forms.controller.js"></script>
+<script src="services/field.service.client.js"></script>
+<script src="views/forms/field.controller.js"></script>
+<script src="views/admin/admin.controller.js"></script>
+</body>
+</html>

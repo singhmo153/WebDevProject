@@ -1,0 +1,35 @@
+<div ng-controller="SearchController">
+    <div>
+        <h2 align="center" class="pageTitle">NextReadHunt</h2>
+    </div>
+    <div align="center">
+        <section class="webdesigntuts-workshop">
+            <form action="" method="">
+                <input ng-model="title" type="search" placeholder="What are you looking for?">
+                <button ng-click="search(title)">Search</button>
+            </form>
+        </section>
+    </div>
+    <div class="searchResults" ng-show="searchOn">
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th class="columnHeading">BookCover</th>
+                    <th class="columnHeading">Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="book in data.items">
+                    <td><img height="100px" width="80px" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}"/></td>
+                    <td>
+                        <a href="#/detail/{{book.id}}" class="bookTitles">
+                            {{book.volumeInfo.title}}
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

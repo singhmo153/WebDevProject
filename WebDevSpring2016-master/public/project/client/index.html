@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NextReadHuntApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>NextReadHunt</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body ng-controller="MainController" class="mainPage" ng-class="{'adminView': currentUser.roles.indexOf('admin')}">
+<div ng-include="'views/header/header.view.html'"></div>
+<div class="container-fluid">
+    <div ng-view></div>
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+<script src="app.js"></script>
+<script src="config.js"></script>
+<script src="views/main/main.controller.js"></script>
+<script src="views/header/header.controller.js"></script>
+<script src="services/user.service.client.js"></script>
+<script src="views/users/register.controller.js"></script>
+<script src="views/users/profile.controller.js"></script>
+<script src="views/users/login.controller.js"></script>
+<script src="services/googlebooksapi.service.js"></script>
+<script src="views/navigation/navigation.controller.js"></script>
+<script src="views/search/search.controller.js"></script>
+<script src="views/search/detail.controller.js"></script>
+<script src="views/books/books.view.html"></script>
+<script src="views/reviews/reviews.view.html"></script>
+<script src="views/following/following.view.html"></script>
+<script src="views/following/following.controller.js"></script>
+<script src="views/books/books.controller.js"></script>
+<script src="services/books.services.client.js"></script>
+<script src="services/reviews.services.client.js"></script>
+<script src="views/reviews/reviews.controller.js"></script>
+<script src="views/admin/admin.controller.js"></script>
+<script src="views/about/about.view.html"></script>
+</body>
+</html>

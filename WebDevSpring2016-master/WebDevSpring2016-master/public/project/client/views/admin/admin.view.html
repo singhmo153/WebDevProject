@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<h1 class="page-header adminStyle">Admin</h1>
+<h2 class="sub-header adminStyle">Users</h2>
+<div class="table-responsive">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th class="align-text-center columnHeading">Username</th>
+            <th class="align-text-center columnHeading"> Password</th>
+            <th class="align-text-center columnHeading">First Name</th>
+            <th class="align-text-center columnHeading">Last Name</th>
+            <th class="align-text-center columnHeading"> Roles</th>
+            <th class="align-text-center columnHeading"> Actions</th>
+        </tr>
+        <tr>
+            <td><div class="input-group"><input type="text" ng-model="selectedUser.username" class="form-control" id="username6" placeholder="Username"></div></td>
+            <td><div class="input-group"><input type="password" ng-model="selectedUser.password" class="form-control" id="password6" placeholder="Password"></div></td>
+            <td><div class="input-group"><input type="text" ng-model="selectedUser.firstName" class="form-control" id="firstName" placeholder="First Name"></div></td>
+            <td><div class="input-group"><input type="text" ng-model="selectedUser.lastName" class="form-control" id="lastName" placeholder="Last Name"></div></td>
+            <td><div class="input-group"><input type="text" ng-model="selectedUser.roles" class="form-control" id="role" placeholder="role1, role2"></div></td>
+            <td><span ng-class="disable ? 'glyphicon glyphicon-plus iconButton' :  'glyphicon glyphicon-plus link-disable iconButton'" ng-click="disable && add(selectedUser)"></span>&nbsp&nbsp&nbsp&nbsp&nbsp
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users" ng-class="{'success' : $index == selectedUserIndex}">
+            <td class="bookTitles">{{user.username}}</td>
+            <td class="bookTitles"></td>
+            <td class="bookTitles">{{user.firstName}}</td>
+            <td class="bookTitles">{{user.lastName}}</td>
+            <td class="bookTitles">{{user.roles.toString()}}</td>
+            <td class="bookTitles">
+                <span class="glyphicon glyphicon-remove iconButton" ng-click="remove(user)"></span>&nbsp&nbsp&nbsp&nbsp&nbsp
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<br>
+<nav ng-controller="NavController">
+    <ul class="nav nav-tabs topNavButtons">
+        <li ng-class="{'active': $location.url() == '/profile/{{currentUser._id}}'}"><a href="#/profile/{{currentUser._id}}">Profile</a></li>
+        <li ng-class="{'active': $location.url() == '/books/{{currentUser._id}}'}"><a href="#/books/{{currentUser._id}}">Books</a></li>
+        <li ng-class="{'active': $location.url() == '/following/{{currentUser._id}}'}"><a href="#/following/{{currentUser._id}}">Following</a></li>
+        <li ng-class="{'active': $location.url() == '/reviews/{{currentUser._id}}'}"><a href="#/reviews/{{currentUser._id}}">Reviews</a></li>
+    </ul>
+</nav>
+<br>
+<div>
+    <div class="table-responsive">
+        <table class="table table-condensed">
+            <thead>
+            <tr>
+                <th class="columnHeading">Book Thumbnail</th>
+                <th class="columnHeading">Book Name</th>
+                <th class="columnHeading">Book Authors</th>
+                <th class="columnHeading">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="book in books" ng-class="{'success' : $index == selectedFormIndex}">
+                <td><img height="100px" width="80px" ng-src="{{book.pic}}"/></td>
+                <td ><a href="#/detail/{{book.bookId}}" class="bookTitles">{{book.title}}</a></td>
+                <td class="bookTitles">{{book.authors.toString()}}</td>
+                <td>
+                    <span ng-disabled="currentuser!=currentUser" class="glyphicon glyphicon-remove iconButton" ng-click="deleteBook(book._id)"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

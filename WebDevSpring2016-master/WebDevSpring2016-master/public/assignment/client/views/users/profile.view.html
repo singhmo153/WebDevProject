@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="ProfileController">
+    <h1 class="page-header">Profile</h1>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="username3" class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="currentuser.username" class="form-control" id="username3" placeholder="Username">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword4" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" ng-model="currentuser.password" class="form-control" id="inputPassword4" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="currentuser.firstName" class="form-control" id="firstname" placeholder="First Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="currentuser.lastName" class="form-control" id="lastname" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail5" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="currentuser.emails" class="form-control" id="inputEmail5"  placeholder="Email" ng-list>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Phones</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="currentuser.phones" class="form-control" id="phone"  placeholder="0123456789" ng-list>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button  ng-click="update(currentuser)" type="submit" class="btn btn-default btn-block btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

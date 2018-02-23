@@ -1,0 +1,84 @@
+<div class="pageTitle elementPadding" align="center"><h2>{{book.volumeInfo.title}}</h2></div>
+<div>
+    <img class="detailBookImg elementPadding" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" height="300px" />
+</div>
+<div class= "elementPadding pageDetails" align="center">
+    Rating : {{book.volumeInfo.averageRating}}
+</div>
+<div class="elementPadding pageDetails">
+    Authors:
+    <ul>
+        <li class= "horizontalList" ng-repeat="authorName in book.volumeInfo.authors">
+            {{authorName}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        </li>
+    </ul>
+</div>
+<div class="elementPadding pageDetails">
+    About :
+    {{book.volumeInfo.description}}
+</div>
+<div ng-show="currentUser">
+    <div class="col-md-6 services-grid elementPadding" align="center">
+        <button type="submit" ng-click="addUserBook(book)" class="btn btn-default btn-lg">Add Book</Button>
+    </div>
+    <div class="col-md-6 services-grid elementPadding" align="center">
+        <button type="button"  class="btn btn-default btn-lg" data-toggle="modal" data-target="#myReview">Write Review</Button>
+    </div>
+    <hr>
+    <div class="elementPadding pageDetails">
+        Reviews:
+        <div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th class="columnHeading">UserName</th>
+                    <th class="columnHeading">Rating</th>
+                    <th class="columnHeading">Review</th>
+                    <th class="columnHeading">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="userReview in userReviews" ng-class="{'success' : $index == selectedFormIndex}">
+                    <td class="bookTitles"><a href="#/profile/{{userReview.userId}}" class="bookTitles">{{userReview.userName}}</a></td>
+                    <td class="bookTitles ratingReviews">{{userReview.rating}}</td>
+                    <td class="bookTitles">{{userReview.comments}}</td>
+                    <td>
+                        <span class="glyphicon glyphicon-thumbs-up iconButton" ng-click="follow(userReview.userId)"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="myReview" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Review</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Rating: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  ng-model="review.rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Comments: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"  ng-model="review.comments">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addUserReview(review, book)">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>
